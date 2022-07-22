@@ -1,0 +1,16 @@
+{% extends "main/base.html" %}
+{% block body %}
+    <div class="container">
+        {% if registered %}
+            <h1>Welcome to our community!!!</h1>
+        {% else %}
+            <h1>Please fill out the form beneath:</h1>
+            <form enctype="multipart/form-data" method="POST">{% csrf_token %}
+                {{ user.as_p }}
+                {{ profile.as_p }}
+                <input class="btn btn-primary" type="submit" value="sign up">
+                
+            </form>
+        {% endif %}
+    </div>
+{% endblock %}

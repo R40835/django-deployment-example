@@ -1,0 +1,35 @@
+{% extends "main/base.html" %}
+{% block body %}
+<div class="center_div">
+    <form action="/contact/" method="post">{% csrf_token %}
+        <!-- hna sagamnaha -->
+        <!-- cat class to enlarge only fields -->
+        <div class="cat">
+            {{ form.non_field_errors }}
+            <div class="fieldWrapper">
+                {{ form.subject.errors }}
+                <label for="{{ form.subject.id_for_label }}">Email subject:</label><br>
+                {{ form.subject }} <br> <br>
+            </div>
+            <div class="fieldWrapper">
+                {{ form.message.errors }}
+                <label for="{{ form.message.id_for_label }}">Your message:</label><br>
+                {{ form.message }} <br> <br>
+            </div>
+            <div class="fieldWrapper">
+                {{ form.sender.errors }}
+                <label for="{{ form.sender.id_for_label }}">Your email address:</label><br>
+                {{ form.sender }} <br> <br>
+            </div>
+        </div>
+
+        <div class="fieldWrapper">
+            {{ form.cc_myself.errors }}
+            <label for="{{ form.cc_myself.id_for_label }}">CC yourself?</label><br>
+            {{ form.cc_myself }} <br> <br>
+        </div>
+        <input class="btn btn-primary" type="submit" value="Send message" />
+    </form>
+</div>
+<h1>css connected if in red!</h1>
+{% endblock %}
